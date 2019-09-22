@@ -1,0 +1,336 @@
+<div class="container-fluid gryBG">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="boxs_BG mt-5">
+        <div class="titleBG"> Objectives</div>
+        <form [formGroup]="objectiveForm">
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Organization Unit Code<span class="red">*</span></label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select name="items" placeholder="Parent Organization Unit Code" (change)="getCodeName()"
+                          formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                    <option selected value="" disabled>Select Unit Code</option>
+                    <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                      {{ codeName.code}}
+                    </option>
+                  </select>
+                  <img src="img/icons/input_i_icon.png" width="12" height="12"/></div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Scorecard Code </label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select class="form-control col-form-label-sm" (change)="getScorecardName()" formControlName="scCode"
+                          name="scCode">
+                    <option>Select Unit Code</option>
+                    <option *ngFor="let item of balanceScoreCardData">{{item.code}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Objective Code <span
+                  class="red">*</span></label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <img src="img/icons/input_i_icon.png" width="12" height="12"/>
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Objective Code"
+                         formControlName="code" name="code">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Organization Unit Name </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" readonly
+                         formControlName="orgName" name="orgName"
+                         placeholder="Organization Unit Name">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Scorecard Name </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Scorecard Name" readonly
+                         formControlName="scName" name="scName">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Objective Name </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder="Objective Name"
+                         formControlName="name" name="name">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Descripation </label>
+                <div class="col-sm-9 pr-0 pl-8">
+                  <textarea class="form-control col-form-label-sm" id="" placeholder="Description"
+                            formControlName="description" name="description"></textarea>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Perspective </label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select name="items" placeholder="Perspective" (change)="getPerspectiveCode()"
+                          formControlName='perspectiveName' name='perspectiveName'
+                          class="form-control col-form-label-sm">
+                    <option selected value="" disabled>Select Perspective</option>
+                    <option *ngFor="let item of perspectives" [value]="item.name">
+                      {{ item.name}}
+                    </option>
+                  </select>
+                  <img src="img/icons/input_i_icon.png" width="12" height="12"/>
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Reporting Frequency </label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select class="form-control col-form-label-sm" formControlName="reportingFrequency"
+                          name="reportingFrequency">
+                    <option selected value="" disabled>Reporting Frequency</option>
+                    <option *ngFor="let item of reportingFrequency" [value]="item.frequency">
+                      {{ item.frequency}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Owner </label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select class="form-control col-form-label-sm">
+                    <option>Select Owner</option>
+                    <option>2343</option>
+                    <option>5464</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Attachments </label>
+                <div class="col-sm-6 pr-0">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                    <label class="custom-file-label" for="customFileLang">Upload..</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Theme </label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select class="form-control col-form-label-sm"
+                          formControlName='themeName' name='themeName' (change)="getThemeCode()">
+                    <option selected value="" disabled>Select Theme</option>
+                    <option *ngFor="let item of themes" [value]="item.name">
+                      {{ item.name}}
+                    </option>
+                  </select>
+                  <img src="img/icons/input_i_icon.png" width="12" height="12"/>
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Collaborators </label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder=" " formControlName="collaborators" name="collaborators">
+                  <!--<select class="form-control col-form-label-sm" >-->
+                    <!--<option selected value="">Select Collaborators</option>-->
+                    <!--<option>test</option>-->
+                    <!--<option>test</option>-->
+                  <!--</select>-->
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm">Unmapped Objectives </label>
+                <div class="col-sm-6 input_i_icon pr-0">
+                  <select class="form-control col-form-label-sm" formControlName="unmapped" name="unmapped">
+                    <option>Select Unmapped Objectives</option>
+                    <option>true</option>
+                    <option>false</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Analysis </label>
+                <div class="col-sm-9 pr-0 pl-8">
+                  <textarea class="form-control col-form-label-sm" id="" placeholder="Analysis"
+                            formControlName="analysis" name="analysis"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Recommendations </label>
+                <div class="col-sm-9 pr-0 pl-8">
+                  <textarea class="form-control col-form-label-sm" id="" placeholder="Recommendations"
+                            formControlName="recommendations" name="recommendations"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm red">Info 1</label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder=" ">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm red">Info 3 </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder=" ">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm red">Info 2</label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder=" ">
+                </div>
+              </div>
+              <div class="form-group row m-0">
+                <label for="" class="col-sm-6 col-form-label col-form-label-sm red">Info 4 </label>
+                <div class="col-sm-6 pr-0">
+                  <input type="text" class="form-control col-form-label-sm" id="" placeholder=" ">
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="float-right">
+                <button type="button" class="btn btn-cancel"> Cancel</button>
+                <button type="button" class="btn btn-save" (click)="saveObjective()"> Save</button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+
+    </div>
+
+
+    <div class="col-md-6">
+      <div class="boxs_BG mt-5">
+        <div class="titleBG"> G100: Group Company</div>
+
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <div class="perapectivesRightTitle">
+              <span> S1: BSC </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+
+          <div class="col-md-6 offset-md-2">
+            <div class="objectBSC">
+              <div class="objectTbsaccordion" id="accordionObjectTbs">
+
+                <!-- =================== -->
+                <div class="objectTbs" *ngFor="let item of PerspectivesByCode">
+                  <div class="perapectivesBSCNames" [attr.id]="item.name"
+                  > {{item.name}} <i
+                    class="fa fa-angle-down"
+                    data-toggle="collapse" [attr.data-target]="'#' + item.name"
+
+                  ></i>
+                  </div>
+
+                  <div [attr.id]="item.name" class="collapse show" [attr.aria-labelledby]="item.name"
+                       data-parent="#accordionObjectTbs">
+                    <div class="card-body">
+                      <div class="perapectivesBSCNames"> Revenue Growth
+                        <div class="perapectivesBSCNamesHover"><i class="fa fa-pencil-square-o"></i> <i
+                          class="fa fa-trash"></i></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="boxs_BG mt-5">
+        <div class="titleBG"> Link to Objectives</div>
+        <div class="linkToObjectivesDiv mt-5">
+          <div class="col-md-12">
+            <div class="row linkToObjectivesSearch">
+              <div class="col-md-3 linkObjectTitle"> Objective</div>
+              <div class="col-md-6 p-0">
+                <select class="form-control col-form-label-sm">
+                  <option>Objectives</option>
+                  <option>Objectives 1</option>
+                  <option>Objectives 2</option>
+                </select>
+              </div>
+              <div class="col-md-3 linkObjectCreateLink"><i class="fa fa-link"></i> Create Link</div>
+            </div>
+            <div class="row linkToObjectivesFilds mt-5">
+              <ul>
+                <li>
+                  <div class="row linkToObjectivesFilds">
+                    <div class="col-md-3">
+                      <div class="measurePinkBoxs">Objective 1</div>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="row">
+                        <div class="col-md-10">
+                          <div class="objectiveBlueBoxs"> Objective 1</div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="objectivePinkBoxs"><i class="fa fa-pencil"></i> <i class="fa fa-trash-o"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,239 @@
+<div class="container-fluid gryBG">
+  <form [formGroup]="corporateStructureForm">
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="boxs_BG mt-5">
+            <div class="titleBG"> Organization Structure</div>
+            <div class="row mt-4">
+              <div class="col-md-6 pr-0">
+                <div class="form-group row m-0">
+                  <label for="code" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code <span
+                    class="red">*</span></label>
+                  <div class="col-sm-7 input_i_icon">
+                    <input type="text" class="form-control col-form-label-sm" placeholder="Organization Unit Code"
+                           id="code"
+                           (focus)="onFocusForElement('code')"
+                           (focusout)="onFocusOutForElement()"
+                           [ngClass]="{'my-error': shouldShowErrors('code', corporateStructureForm)}"
+                           formControlName="code" name="code"
+                    >
+                    <img src="../../../assets/images/icons/input_i_icon.png" width="12" height="12"/>
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="parentOrgUnitCode" class="col-sm-5 col-form-label col-form-label-sm">Parent Organization
+                    Unit Code </label>
+                  <div class="col-sm-7 input_i_icon">
+
+                    <select name="items" placeholder="Parent Organization Unit Code" formControlName='parentCode'
+                            id="parentOrgUnitCode"
+                            (change)="onFocusForElement('parentCode')"
+                            (focusout)="onFocusOutForElement()"
+                            name='parentCode' class="form-control col-form-label-sm">
+                      <option selected value="null" disabled>Select Unit Code</option>
+                      <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                        {{ codeName.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="managerName" class="col-sm-5 col-form-label col-form-label-sm">Name of the
+                    Manager </label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" placeholder="Name of the Manager "
+                           id="managerName"
+                           (focus)="onFocusForElement('managerName')" (focusout)="onFocusOutForElement()"
+                           [ngClass]="{'my-error': shouldShowErrors('managerName', corporateStructureForm)}"
+                           formControlName="managerName" name="managerName">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="employeeCount" class="col-sm-5 col-form-label col-form-label-sm">No of Employees </label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm inputWithoutDecimal" id="employeeCount"
+                           (focus)="onFocusForElement('employeeCount')"
+                           (focusout)="onFocusOutForElement()"
+                           [ngClass]="{'my-error': shouldShowErrors('employeeCount', corporateStructureForm)}"
+                           placeholder="No of Employees "
+                           formControlName="employeeCount" name="employeeCount">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-5 col-form-label col-form-label-sm">Logo</label>
+
+                  <div class="col-sm-7 input_i_icon">
+                    <input class="chooseInput" id="uploadId" type="file" accept="image/*" formControlName="logoUrl"
+                           name="logoUrl"
+                           (change)="uploadLogo($event)"
+                    />
+                    <img src="../../../assets/images/icons/input_i_icon.png" width="12" height="12"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 pl-0">
+                <div class="form-group row m-0">
+                  <label for="orgUnitName" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit
+                    Name </label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" placeholder="Organization Unit Name"
+                           id="orgUnitName"
+                           (focus)="onFocusForElement('name')"
+                           (focusout)="onFocusOutForElement()"
+                           [ngClass]="{'my-error': shouldShowErrors('name', corporateStructureForm)}"
+                           formControlName="name" name="name">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="unitType" class="col-sm-5 col-form-label col-form-label-sm">Type of Unit <span
+                    class="red">*</span></label>
+                  <div class="col-sm-7 input_i_icon">
+                    <select placeholder="Transaction Types" formControlName="type" name="type" id="unitType"
+                            class="form-control col-form-label-sm">
+                      <option selected value="" disabled>Select Unit Type</option>
+                      <option *ngFor="let code of unitCodes">
+                        {{ code.value}}
+                      </option>
+                    </select>
+                    <img src="../../../assets/images/icons/input_i_icon.png" width="12" height="12"/>
+                  </div>
+                </div>
+
+                <div class="form-group row m-0">
+                  <label for="head" class="col-sm-5 col-form-label col-form-label-sm">Head of Organization </label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" id="" placeholder="Head of Organization"
+                           id="head"
+                           (focus)="onFocusForElement('head')"
+                           (focusout)="onFocusOutForElement()"
+                           [ngClass]="{'my-error': shouldShowErrors('head', corporateStructureForm)}"
+                           formControlName="head" name="head">
+                  </div>
+                </div>
+                <div class="form-group row m-0">
+                  <label for="location" class="col-sm-5 col-form-label col-form-label-sm">Location <span
+                    class="red">*</span></label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control col-form-label-sm" placeholder="Location" id="location"
+                           (focus)="onFocusForElement('location')"
+                           (focusout)="onFocusOutForElement()"
+                           [ngClass]="{'my-error': shouldShowErrors('location', corporateStructureForm)}"
+                           formControlName="location" name="location">
+                  </div>
+                </div>
+                <br/>
+                <br/>
+
+                <div class="form-group row m-0">
+                  <label for="" class="col-sm-4 col-form-label col-form-label-sm"> </label>
+                  <div class="col-sm-8 text-right">
+                    <button type="button" class="btn btn-cancel mr-1" (click)="clearFields()">Clear</button>
+                    <button class="btn btn-save" (click)="submitOrganization()"
+                            [disabled]="!corporateStructureForm.valid"> Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="boxs_BG mt-5">
+            <div class="titleBG"> Mission</div>
+            <div>
+              <i class="fa fa-save pull-right" (click)="saveMissionText()"></i>
+              <i class="fa fa-edit pull-right" (click)="editMissionText()"></i>
+            </div>
+            <div class="mt-4">
+              <div class="col-md-12 mvv_Box mvv_textarea mb-3">
+                <div [ngClass]="{ 'readonlyControl1': editMission === false }" *ngIf="!editMission">
+                  {{missiontxt}}
+                </div>
+                <textarea placeholder="Enter your mission..." *ngIf="editMission" name="mission"
+                          formControlName="missionStmt"
+                          name="missionStmt"
+                          [ngClass]="{'readonlyControl': editMission === true}"></textarea>
+              </div>
+              <div class="col-md-12 mvv_textarea mvv_textarea_child2 mt-1">
+                <textarea placeholder="Enter your mission..." formControlName="missionStmt"
+                          name="missionStmt"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="boxs_BG">
+          <div class="titleBG"> Vission</div>
+          <div>
+            <i class="fa fa-save pull-right" (click)="saveVisionText()"></i>
+            <i class="fa fa-edit pull-right" (click)="editVisionText()"></i>
+          </div>
+          <div class="mt-4">
+            <div class="col-md-12 mvv_Box mvv_textarea mb-3">
+              <div [ngClass]="{ 'readonlyControl1': editMission === false }" *ngIf="!editVision">
+                {{visiontxt}}
+              </div>
+              <textarea placeholder="Enter your mission..." *ngIf="editVision" name="vision"
+                        formControlName="visionStmt"
+                        name="visionStmt"
+                        [ngClass]="{'readonlyControl': editVision === true}"></textarea>
+            </div>
+            <div class="col-md-12 mvv_textarea mvv_textarea_child2 mt-1">
+              <textarea placeholder="Enter your vission..." formControlName="visionStmt" name="visionStmt"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="boxs_BG">
+          <div class="titleBG"> Values</div>
+          <div>
+            <i class="fa fa-save pull-right" (click)="saveValueText()"></i>
+            <i class="fa fa-edit pull-right" (click)="editValueText()"></i>
+          </div>
+          <div class="mt-4">
+            <div class="col-md-12 mvv_Box mvv_textarea mb-3">
+              <div [ngClass]="{ 'readonlyControl1': editValue === false }" *ngIf="!editValue">
+                {{valuetxt}}
+              </div>
+              <textarea placeholder="Enter your mission..." *ngIf="editValue"
+                        name="vision" formControlName="valuesStmt"
+                        name="valuesStmt"
+                        [ngClass]="{'readonlyControl': editValue === true}"></textarea>
+            </div>
+            <div class="col-md-12 mvv_textarea mvv_textarea_child2 mt-1">
+              <textarea placeholder="Enter your values..." formControlName="valuesStmt" name="valuesStmt"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row summary_View">
+
+      <div class="col-md-6">
+        <div class="float-left">
+          <button class="btn btn-pink" (click)="routeToSummaryView()"><i class="fa fa-eye"></i> Summary View</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="float-right">
+          <button type="button" class="btn btn-cancel mr-2" (click)="clearFields()"> Clear</button>
+          <button type="button" class="btn btn-success" (click)="submitOrganization()"
+                  [disabled]="!corporateStructureForm.valid"
+          > Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,67 @@
+<div class="container-fluid gryBG">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 p-0 whiteBG">
+      <nav class="navbar navbar-dark sticky-top flex-md-nowrap innerPageBorder">
+        <div class="col-lg-2 p-0 text-center innerLogoBG">
+          <div class="">
+            <img src="../../../../assets/images/D_logo.png" class="" width="130" height="30"/>
+          </div>
+
+          <div class="tabLine border-0">
+				<span>
+					STRATEGY EXECUTION SYSTEM
+				</span>
+          </div>
+        </div>
+
+        <div class="col-lg-10 p-0">
+          <div class="topMenuBG right_menu">
+            <a class="navbar-brand col-sm-4 col-md-3 mr-0 px-4 white">Balance Scorecard</a>
+            <ul class="navbar-nav float-right">
+              <li class="nav-item text-nowrap">
+
+                <div class="form-group float-left mr-md-4 mt-md-1 m-0">
+                  <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                    <option>Untiles 1</option>
+                    <option>Untiles 2</option>
+                    <option>Untiles 3</option>
+                    <option>Untiles 4</option>
+                    <option>Untiles 5</option>
+                  </select>
+                </div>
+
+                <a class=" "><img src="../../../assets/images/icons/reload_Icon.png" width="24"
+                                  height="19"/></a>
+                <a class=" "><img src="../../../assets/images/icons/list_icon.png" width="17" height="20"/></a>
+                <a class=" "><img src="../../../assets/images/icons/tag_Icon.png" width="12" height="20"/></a>
+                <a class=" "><img src="../../../assets/images/icons/home.png" width="21" height="19"/></a>
+                <a class="mr-md-5"><img src="../../../assets/images/icons/star.png" width="20"
+                                        height="20"/></a>
+
+                <a class=" "><img src="../../../../assets/images/icons/settings.png" width="21" height="21"/></a>
+                <a class=" "><img src="../../../../assets/images/icons/question-fill.png" width="22" height="22"/></a>
+                <a class=" "><img src="../../../../assets/images/icons/user_male.png" width="40" height="40"/></a>
+              </li>
+            </ul>
+          </div>
+          <div class="innerPageMenuBG">
+            <ul>
+              <li *ngFor="let headerLink of headerLinks; let i = index"><a [routerLink]="headerLink.link"
+              ><img class="Action_ItemsImg" [src]="headerLink.imgOverlay" width="16" height="20"/>
+                <img class="Action_Items_whiteImg"
+                     [src]="headerLink.img" (click)="activeLink(headerLink.id, i)" width="20"
+                     height="20"/>{{headerLink.name}}</a>
+                <ul id="subMenus">
+                  <li *ngFor="let link of headerLink.children"><a
+                    [routerLink]="link.route">{{link.name}}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+

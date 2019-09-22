@@ -1,0 +1,260 @@
+<div class="container-fluid gryBG">
+<div class="row">
+  <div class="col-md-12">
+    <div class="boxs_BG mt-5">
+
+      <div class="titleBG"> Milestones</div>
+      <form [formGroup]="milestoneForm">
+        <div class="row mt-4">
+          <div class="col-md-6 pr-0">
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Code </label>
+              <div class="col-sm-7">
+                <select name="items" placeholder="Parent Organization Unit Code"
+                        (change)="getCodeAndName()"
+                        formControlName='orgCode' name='orgCode' class="form-control col-form-label-sm">
+                  <option selected value="" disabled>Select Unit Code</option>
+                  <option *ngFor="let codeName of codeAndName" [value]="codeName.code">
+                    {{ codeName.code}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Initiative Code </label>
+              <div class="col-sm-7">
+                <select name="items" placeholder="Initiative Code"
+                        (change)="getInitiativeName()"
+                        formControlName='initiativeCode' name='initiativeCode' class="form-control col-form-label-sm">
+                  <option selected value="" disabled>Select Initiative Code</option>
+                  <option *ngFor="let codeName of initiativeCode" [value]="codeName.code">
+                    {{ codeName.code}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Milestone Code </label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control col-form-label-sm" id="" placeholder="Milestone Code"
+                       (focus)="onFocusForElement('code')"
+                       (focusout)="onFocusOutForElement()"
+                       formControlName="code" name="code">
+              </div>
+            </div>
+
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Parent Milestone </label>
+              <div class="col-sm-7">
+                <select class="form-control col-form-label-sm">
+                  <option>Select Parent Milestone</option>
+                  <option>2343</option>
+                  <option>5464</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Description </label>
+              <div class="col-sm-7">
+                <textarea class="form-control col-form-label-sm" id="" placeholder="Description"
+                          formControlName="description" name="description"></textarea>
+              </div>
+            </div>
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Owner </label>
+              <div class="col-sm-7">
+                <select class="form-control col-form-label-sm" formControlName="owner" name="owner">
+                  <option>Select Owner</option>
+                  <option>Owner 1</option>
+                  <option>Owner 2</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Collaborators </label>
+              <div class="col-sm-7">
+                <select class="form-control col-form-label-sm" formControlName="collaborators" name="collaborators">
+                  <option>Select Collaborators</option>
+                  <option>2343</option>
+                  <option>5464</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6 ">
+
+
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Organization Unit Name </label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control col-form-label-sm" formControlName="orgName" name="orgName"
+                       (focus)="onFocusForElement('orgName')"
+                       (focusout)="onFocusOutForElement()"
+                       readonly
+                       placeholder="Organization Unit Name">
+              </div>
+            </div>
+
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Initiative Name </label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control col-form-label-sm" formControlName="initiativeName"
+                       name="initiativeName"
+                       readonly
+                       placeholder="Initiative Name">
+              </div>
+            </div>
+
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Milestone Name </label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control col-form-label-sm" id="" placeholder="Milestone Name"
+                       (focus)="onFocusForElement('name')"
+                       (focusout)="onFocusOutForElement()"
+                       formControlName="name" name="name">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Evaluation Master Measure </label>
+              <div class="col-sm-7 pr-0">
+                <select class="form-control col-form-label-sm">
+                  <option>Select Evaluation Master Measure</option>
+                  <option>Evaluation 1</option>
+                  <option>Evaluation 2</option>
+                </select>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="col-md-6">
+
+
+            <div class="form-group m-0">
+              <label for="" class="col-sm-3 col-form-label col-form-label-sm">Duration : </label>
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row m-0">
+                      <label for="" class="col-sm-4 col-form-label col-form-label-sm pl-0">Start Date </label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control mb-3" placeholder="From" bsDatepicker
+                               [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+                               formControlName="startDate" name="startDate"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row m-0">
+                      <label for="" class="col-sm-4 col-form-label col-form-label-sm">End Date </label>
+                      <div class="col-sm-8 pr-0">
+                        <input type="text" class="form-control mb-3" placeholder="To" bsDatepicker
+                               [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+                               formControlName="endDate" name="endDate"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr/>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Milestone Analysis </label>
+              <div class="col-sm-7 pr-0">
+                <textarea class="form-control col-form-label-sm" id="" placeholder="Milestone Analysis"
+                          formControlName="analysis" name="analysis"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Milestone Recommendation </label>
+              <div class="col-sm-7">
+                <textarea class="form-control col-form-label-sm" id="" formControlName="recommendation"
+                          name="recommendation"
+                          placeholder="Milestone Recommendation"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Status </label>
+              <div class="col-sm-7 pr-0">
+                <select class="form-control col-form-label-sm" formControlName="status" name="status">
+                  <option selected>Select Status</option>
+                  <option>Status 1</option>
+                  <option>Status 2</option>
+                </select>
+              </div>
+            </div>
+
+            <br/>
+
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Percent Complete </label>
+              <div class="col-sm-7 pr-0">
+                <ng5-slider [options]="options"
+                            (valueChange)="percentCompleted($event)"></ng5-slider>
+              </div>
+            </div>
+
+            <div class="custom-control custom-checkbox ml-3 mt-4">
+              <input type="checkbox" class="custom-control-input" id="completed" formControlName="completed"
+                     name="completed">
+              <label class="custom-control-label cursorPointer" for="completed">Milestones Completed</label>
+            </div>
+
+
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row m-0">
+              <label for="" class="col-sm-5 col-form-label col-form-label-sm">Date </label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control mb-3" placeholder="From" bsDatepicker
+                       [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+                       formControlName="completionDate" name="completionDate"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12 mt-3">
+            <div class="float-right">
+              <button type="button" class="btn btn-cancel"> Cancel</button>
+              <button type="button" class="btn btn-save" (click)="saveMilestone()"
+                      [disabled]="!milestoneForm.valid"> Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
