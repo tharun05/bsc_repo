@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  
   API_END_POINT: 'http://www.datalabsindia.ml:8082/bsc/api',
 };
 
